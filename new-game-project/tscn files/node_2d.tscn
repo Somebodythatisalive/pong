@@ -1,0 +1,250 @@
+[gd_scene load_steps=26 format=3 uid="uid://u5nbv8cbt7is"]
+
+[ext_resource type="Script" path="res://gd files/node_2d.gd" id="1_bikbt"]
+[ext_resource type="Script" path="res://gd files/character_body_2d.gd" id="2_ecox6"]
+[ext_resource type="Script" path="res://gd files/p2.gd" id="4_eichh"]
+[ext_resource type="Texture2D" uid="uid://bp123c2gleukr" path="res://Untitled.png" id="5_2howc"]
+[ext_resource type="Script" path="res://gd files/castle.gd" id="6_41knr"]
+[ext_resource type="Texture2D" uid="uid://d18n7woad7two" path="res://P1.healthbar.DEADLOL.png" id="8_cv1yl"]
+[ext_resource type="Texture2D" uid="uid://j684go5opqp6" path="res://P1.healthbar.alive.png" id="9_gltga"]
+[ext_resource type="Texture2D" uid="uid://dqww72sxe4u2n" path="res://Line.playerblock.png" id="11_cd44v"]
+[ext_resource type="Script" path="res://gd files/P2Castle.gd" id="12_1qf7h"]
+[ext_resource type="Texture2D" uid="uid://cdl1tv6prwfxj" path="res://P2.healthbar.DEADLOL.png" id="13_4hbry"]
+[ext_resource type="Texture2D" uid="uid://bryuqpxntfy62" path="res://P2.healthbar.alive.png" id="14_4df4b"]
+[ext_resource type="Script" path="res://gd files/icon_2.gd" id="15_6tq86"]
+[ext_resource type="Script" path="res://gd files/button.gd" id="16_48715"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q0snh"]
+size = Vector2(91.4286, 134.394)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oq1qo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_2howc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"ow :(",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hm7rw"]
+size = Vector2(95.3471, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dfmg6"]
+size = Vector2(93.6522, 77.082)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xbgua"]
+size = Vector2(71, 651)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_405w2"]
+size = Vector2(2067.56, 14.7596)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uohl5"]
+size = Vector2(8.99312, 785.614)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfx2h"]
+size = Vector2(129.655, 65.1743)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7a0n"]
+size = Vector2(128, 670.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rv0lw"]
+radius = 15.2971
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sid00"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_git1r"]
+size = Vector2(9, 653)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_bikbt")
+
+[node name="that means!" type="Area2D" parent="."]
+position = Vector2(1008, 352.5)
+scale = Vector2(1.4, 4.87)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("12_1qf7h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="that means!"]
+position = Vector2(59.2857, -5.44148)
+shape = SubResource("RectangleShape2D_q0snh")
+debug_color = Color(3.85046e-07, 0.642409, 0.318232, 0.42)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="that means!"]
+offset_left = -292.857
+offset_top = -52.2587
+offset_right = -98.8575
+offset_bottom = -40.2587
+max_value = 1000.0
+value = 1.0
+fill_mode = 1
+nine_patch_stretch = true
+texture_under = ExtResource("13_4hbry")
+texture_progress = ExtResource("14_4df4b")
+
+[node name="TextureRect" type="TextureRect" parent="that means!"]
+offset_left = -314.0
+offset_top = -69.0
+offset_right = -303.0
+offset_bottom = 57.0
+texture = ExtResource("11_cd44v")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="that means!"]
+modulate = Color(1, 0, 0, 1)
+offset_left = 2.14286
+offset_top = -68.4805
+offset_right = 13.1429
+offset_bottom = 57.5195
+texture = ExtResource("11_cd44v")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="that means!"]
+modulate = Color(1, 0, 0, 1)
+offset_left = -627.857
+offset_top = -68.6858
+offset_right = -616.857
+offset_bottom = 57.3142
+texture = ExtResource("11_cd44v")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="you" type="CharacterBody2D" parent="."]
+collision_layer = 129
+collision_mask = 129
+motion_mode = 1
+script = ExtResource("2_ecox6")
+
+[node name="me" type="AnimatedSprite2D" parent="you"]
+position = Vector2(200, 325)
+scale = Vector2(0.18, 11.5)
+sprite_frames = SubResource("SpriteFrames_oq1qo")
+
+[node name="Gas station" type="CollisionShape2D" parent="you"]
+position = Vector2(200, 325)
+scale = Vector2(0.2, 3)
+shape = SubResource("RectangleShape2D_hm7rw")
+debug_color = Color(0.998222, 0, 0.14751, 0.42)
+
+[node name="What are we getting" type="CharacterBody2D" parent="."]
+position = Vector2(3.05176e-05, 3.05176e-05)
+collision_layer = 129
+collision_mask = 129
+motion_mode = 1
+script = ExtResource("4_eichh")
+
+[node name="for dinner?" type="AnimatedSprite2D" parent="What are we getting"]
+position = Vector2(950, 325)
+scale = Vector2(0.180001, 11.5)
+sprite_frames = SubResource("SpriteFrames_oq1qo")
+
+[node name="Sushi of course!" type="CollisionShape2D" parent="What are we getting"]
+position = Vector2(950, 325)
+scale = Vector2(0.2, 1.5)
+shape = SubResource("RectangleShape2D_dfmg6")
+one_way_collision_margin = 0.0
+debug_color = Color(0.998222, 0, 0.14751, 0.42)
+
+[node name="uh oh!" type="RigidBody2D" parent="."]
+lock_rotation = true
+freeze = true
+
+[node name="ruby" type="CollisionShape2D" parent="uh oh!"]
+position = Vector2(-35.5, 322.5)
+shape = SubResource("RectangleShape2D_xbgua")
+
+[node name="we black out" type="CollisionShape2D" parent="uh oh!"]
+position = Vector2(580.5, 679.25)
+rotation = -3.14159
+scale = Vector2(0.5625, 4.23438)
+shape = SubResource("RectangleShape2D_405w2")
+
+[node name="wake up" type="CollisionShape2D" parent="uh oh!"]
+position = Vector2(1195.75, 335)
+scale = Vector2(9.0625, 0.851563)
+shape = SubResource("RectangleShape2D_uohl5")
+
+[node name="a sewer" type="CollisionShape2D" parent="uh oh!"]
+position = Vector2(587.5, -27.75)
+scale = Vector2(9.0625, 0.851563)
+shape = SubResource("RectangleShape2D_xfx2h")
+
+[node name="were" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("6_41knr")
+
+[node name="surronded by" type="CollisionShape2D" parent="were"]
+position = Vector2(64, 330.25)
+shape = SubResource("RectangleShape2D_x7a0n")
+debug_color = Color(0.967356, 1.63645e-06, 0.474771, 0.42)
+
+[node name="*****" type="TextureProgressBar" parent="were"]
+offset_left = 286.0
+offset_top = 100.0
+offset_right = 557.0
+offset_bottom = 160.0
+max_value = 1000.0
+nine_patch_stretch = true
+texture_under = ExtResource("8_cv1yl")
+texture_progress = ExtResource("9_gltga")
+
+[node name="BALL" type="CharacterBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+motion_mode = 1
+wall_min_slide_angle = 0.0
+platform_on_leave = 2
+safe_margin = 18.102
+script = ExtResource("15_6tq86")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BALL"]
+position = Vector2(575, 359)
+shape = SubResource("CircleShape2D_rv0lw")
+one_way_collision_margin = 128.0
+debug_color = Color(0.593034, 0.537443, 0.284602, 0.42)
+
+[node name="Icon" type="Sprite2D" parent="BALL/CollisionShape2D"]
+position = Vector2(1.52588e-05, -1.23978e-05)
+scale = Vector2(0.27, 2.5)
+texture = ExtResource("5_2howc")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(535, 280)
+collision_layer = 128
+collision_mask = 128
+physics_material_override = SubResource("PhysicsMaterial_sid00")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(40.5, 46.5)
+shape = SubResource("RectangleShape2D_git1r")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1272.0
+offset_top = 231.0
+offset_right = 1399.0
+offset_bottom = 325.0
+text = "place a mine"
+script = ExtResource("16_48715")
+
+[node name="game start timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="body_entered" from="that means!" to="that means!" method="_on_body_entered"]
+[connection signal="body_exited" from="that means!" to="that means!" method="_on_body_exited"]
+[connection signal="body_entered" from="were" to="were" method="_on_body_entered"]
+[connection signal="body_exited" from="were" to="were" method="_on_body_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_pressed"]

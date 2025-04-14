@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://btv3u72defr5y"]
+
+[ext_resource type="Texture2D" uid="uid://s24f4ctbsx7l" path="res://landmine.png" id="2_8njdd"]
+[ext_resource type="Script" path="res://gd files/landmine.gd" id="3_ltrip"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_khsav"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8njdd")
+}],
+"loop": true,
+"name": &"no.boom",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ufm8f"]
+radius = 17.2647
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d5an1"]
+radius = 65.6071
+
+[node name="Landmine" type="AnimatedSprite2D"]
+position = Vector2(975.448, 557.754)
+scale = Vector2(-1.65404, 1.37948)
+sprite_frames = SubResource("SpriteFrames_khsav")
+animation = &"no.boom"
+script = ExtResource("3_ltrip")
+
+[node name="detection radius" type="Area2D" parent="."]
+collision_layer = 130
+collision_mask = 130
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection radius"]
+position = Vector2(0.573242, 0.540771)
+shape = SubResource("CircleShape2D_ufm8f")
+debug_color = Color(0.586181, 0.521692, 0.480865, 0.42)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.697
+one_shot = true
+
+[node name="Blast radius" type="Area2D" parent="."]
+
+[node name="kaBOOM" type="CollisionShape2D" parent="Blast radius"]
+shape = SubResource("CircleShape2D_d5an1")
+
+[node name="BlastTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="detection radius" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,160 @@
+[gd_scene load_steps=17 format=3 uid="uid://u5nbv8cbt7is"]
+
+[ext_resource type="Texture2D" uid="uid://casax5aa0o61r" path="res://icon.svg" id="1_b158s"]
+[ext_resource type="Script" path="res://character_body_2d.gd" id="2_gs38f"]
+[ext_resource type="Script" path="res://castle.gd" id="3_b8afx"]
+[ext_resource type="Texture2D" uid="uid://dubki1ohwg4ne" path="res://pixil-frame-0 (9).png" id="3_v1cuc"]
+[ext_resource type="Texture2D" uid="uid://dv35jb3yqj8ul" path="res://hahahahhcastleyeyy.png" id="3_v03jp"]
+[ext_resource type="Script" path="res://icon_2.gd" id="4_3cso5"]
+[ext_resource type="Texture2D" uid="uid://b3cy3rd872087" path="res://pixil-frame-0 (10).png" id="5_ol3xp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oq1qo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_b158s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hm7rw"]
+size = Vector2(101.878, 81.2776)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xbgua"]
+size = Vector2(70, 544)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_405w2"]
+size = Vector2(1792.41, 12.9256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uohl5"]
+size = Vector2(7.17241, 637.651)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfx2h"]
+size = Vector2(126.648, 115.619)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7a0n"]
+size = Vector2(161, 479)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q0snh"]
+size = Vector2(108.572, 99.7947)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hq2k2"]
+radius = 13.1529
+
+[node name="Node2D" type="Node2D"]
+
+[node name="you" type="CharacterBody2D" parent="."]
+position = Vector2(283, 395)
+scale = Vector2(0.382813, 2.05469)
+collision_layer = 3
+collision_mask = 3
+motion_mode = 1
+script = ExtResource("2_gs38f")
+
+[node name="me" type="AnimatedSprite2D" parent="you"]
+position = Vector2(-2.61237, -0.973419)
+scale = Vector2(0.831632, 0.632129)
+sprite_frames = SubResource("SpriteFrames_oq1qo")
+
+[node name="Gas station" type="CollisionShape2D" parent="you"]
+position = Vector2(-2.61224, -5.00679e-06)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_hm7rw")
+debug_color = Color(0.998222, 0, 0.14751, 0.42)
+
+[node name="WALLS" type="RigidBody2D" parent="."]
+lock_rotation = true
+freeze = true
+
+[node name="Icon" type="Sprite2D" parent="WALLS"]
+position = Vector2(39, 375)
+scale = Vector2(0.5625, 4.23438)
+texture = ExtResource("1_b158s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WALLS"]
+position = Vector2(39, 369)
+shape = SubResource("RectangleShape2D_xbgua")
+
+[node name="Icon2" type="Sprite2D" parent="WALLS"]
+position = Vector2(579.125, 618.375)
+scale = Vector2(7.88867, 0.458986)
+texture = ExtResource("1_b158s")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WALLS"]
+position = Vector2(578.886, 618.634)
+rotation = -3.14159
+scale = Vector2(0.5625, 4.23438)
+shape = SubResource("RectangleShape2D_405w2")
+
+[node name="Icon3" type="Sprite2D" parent="WALLS"]
+position = Vector2(1113, 374)
+scale = Vector2(0.546875, 4.25)
+texture = ExtResource("1_b158s")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WALLS"]
+position = Vector2(1114.5, 372.5)
+scale = Vector2(9.0625, 0.851563)
+shape = SubResource("RectangleShape2D_uohl5")
+
+[node name="Icon4" type="Sprite2D" parent="WALLS"]
+position = Vector2(576, 54.5)
+scale = Vector2(9.0625, 0.851563)
+texture = ExtResource("1_b158s")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="WALLS"]
+position = Vector2(574.125, 51.7715)
+scale = Vector2(9.0625, 0.851563)
+shape = SubResource("RectangleShape2D_xfx2h")
+
+[node name="castle" type="Area2D" parent="."]
+script = ExtResource("3_b8afx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="castle"]
+position = Vector2(158.5, 349.5)
+shape = SubResource("RectangleShape2D_x7a0n")
+debug_color = Color(0.967356, 1.63645e-06, 0.474771, 0.42)
+
+[node name="Pixil-frame-0(9)" type="Sprite2D" parent="castle"]
+position = Vector2(155, 354.5)
+scale = Vector2(1.64, 4.85)
+texture = ExtResource("3_v03jp")
+
+[node name="castle health" type="TextureProgressBar" parent="castle"]
+offset_left = 283.0
+offset_top = 136.0
+offset_right = 554.0
+offset_bottom = 196.0
+max_value = 1000.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_v1cuc")
+texture_progress = ExtResource("5_ol3xp")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(1008, 352.5)
+scale = Vector2(1.4, 4.87)
+
+[node name="Pixil-frame-0(9)" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("3_v03jp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-7.14276, 0.102669)
+shape = SubResource("RectangleShape2D_q0snh")
+debug_color = Color(3.85046e-07, 0.642409, 0.318232, 0.42)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("4_3cso5")
+
+[node name="Icon" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(554, 354)
+scale = Vector2(0.210938, 0.21875)
+texture = ExtResource("1_b158s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(554, 354)
+shape = SubResource("CircleShape2D_hq2k2")
+debug_color = Color(0.593034, 0.537443, 0.284602, 0.42)
+
+[connection signal="body_entered" from="castle" to="castle" method="_on_body_entered"]
+[connection signal="body_exited" from="castle" to="castle" method="_on_body_exited"]
