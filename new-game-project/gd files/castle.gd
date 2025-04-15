@@ -2,7 +2,7 @@ extends Area2D
 var dmgisreal = false
 var health = 1000
 var death = preload("res://tscn files/p2 win.tscn")
-@onready var progress_bar: TextureProgressBar =$"*****"
+@onready var progress_bar: TextureProgressBar =$"p1 hp bar"
 @onready var basicball: CharacterBody2D =$"../BALL"
 
 # Called when the node enters the scene tree for the first time.

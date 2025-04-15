@@ -121,77 +121,77 @@ texture = ExtResource("11_cd44v")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="you" type="CharacterBody2D" parent="."]
+[node name="p1" type="CharacterBody2D" parent="."]
 collision_layer = 129
 collision_mask = 129
 motion_mode = 1
 script = ExtResource("2_ecox6")
 
-[node name="me" type="AnimatedSprite2D" parent="you"]
+[node name="p1 animation" type="AnimatedSprite2D" parent="p1"]
 position = Vector2(200, 325)
 scale = Vector2(0.18, 11.5)
 sprite_frames = SubResource("SpriteFrames_oq1qo")
 
-[node name="Gas station" type="CollisionShape2D" parent="you"]
+[node name="p1 hitbox" type="CollisionShape2D" parent="p1"]
 position = Vector2(200, 325)
 scale = Vector2(0.2, 3)
 shape = SubResource("RectangleShape2D_hm7rw")
 debug_color = Color(0.998222, 0, 0.14751, 0.42)
 
-[node name="What are we getting" type="CharacterBody2D" parent="."]
+[node name="p2" type="CharacterBody2D" parent="."]
 position = Vector2(3.05176e-05, 3.05176e-05)
 collision_layer = 129
 collision_mask = 129
 motion_mode = 1
 script = ExtResource("4_eichh")
 
-[node name="for dinner?" type="AnimatedSprite2D" parent="What are we getting"]
+[node name="p2 animation" type="AnimatedSprite2D" parent="p2"]
 position = Vector2(950, 325)
 scale = Vector2(0.180001, 11.5)
 sprite_frames = SubResource("SpriteFrames_oq1qo")
 
-[node name="Sushi of course!" type="CollisionShape2D" parent="What are we getting"]
+[node name="p2 hitbox" type="CollisionShape2D" parent="p2"]
 position = Vector2(950, 325)
 scale = Vector2(0.2, 1.5)
 shape = SubResource("RectangleShape2D_dfmg6")
 one_way_collision_margin = 0.0
 debug_color = Color(0.998222, 0, 0.14751, 0.42)
 
-[node name="uh oh!" type="RigidBody2D" parent="."]
+[node name="walls" type="RigidBody2D" parent="."]
 lock_rotation = true
 freeze = true
 
-[node name="ruby" type="CollisionShape2D" parent="uh oh!"]
+[node name="left" type="CollisionShape2D" parent="walls"]
 position = Vector2(-35.5, 322.5)
 shape = SubResource("RectangleShape2D_xbgua")
 
-[node name="we black out" type="CollisionShape2D" parent="uh oh!"]
+[node name="down" type="CollisionShape2D" parent="walls"]
 position = Vector2(580.5, 679.25)
 rotation = -3.14159
 scale = Vector2(0.5625, 4.23438)
 shape = SubResource("RectangleShape2D_405w2")
 
-[node name="wake up" type="CollisionShape2D" parent="uh oh!"]
+[node name="right" type="CollisionShape2D" parent="walls"]
 position = Vector2(1195.75, 335)
 scale = Vector2(9.0625, 0.851563)
 shape = SubResource("RectangleShape2D_uohl5")
 
-[node name="a sewer" type="CollisionShape2D" parent="uh oh!"]
+[node name="up" type="CollisionShape2D" parent="walls"]
 position = Vector2(587.5, -27.75)
 scale = Vector2(9.0625, 0.851563)
 shape = SubResource("RectangleShape2D_xfx2h")
 
-[node name="were" type="Area2D" parent="."]
+[node name="p1 castle" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("6_41knr")
 
-[node name="surronded by" type="CollisionShape2D" parent="were"]
+[node name="surronded by" type="CollisionShape2D" parent="p1 castle"]
 position = Vector2(64, 330.25)
 shape = SubResource("RectangleShape2D_x7a0n")
 debug_color = Color(0.967356, 1.63645e-06, 0.474771, 0.42)
 
-[node name="*****" type="TextureProgressBar" parent="were"]
+[node name="p1 hp bar" type="TextureProgressBar" parent="p1 castle"]
 offset_left = 286.0
 offset_top = 100.0
 offset_right = 557.0
@@ -210,13 +210,13 @@ platform_on_leave = 2
 safe_margin = 18.102
 script = ExtResource("15_6tq86")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BALL"]
+[node name="ball hitbox" type="CollisionShape2D" parent="BALL"]
 position = Vector2(575, 359)
 shape = SubResource("CircleShape2D_rv0lw")
 one_way_collision_margin = 128.0
 debug_color = Color(0.593034, 0.537443, 0.284602, 0.42)
 
-[node name="Icon" type="Sprite2D" parent="BALL/CollisionShape2D"]
+[node name="ball animation" type="Sprite2D" parent="BALL/ball hitbox"]
 position = Vector2(1.52588e-05, -1.23978e-05)
 scale = Vector2(0.27, 2.5)
 texture = ExtResource("5_2howc")
@@ -245,6 +245,6 @@ one_shot = true
 
 [connection signal="body_entered" from="that means!" to="that means!" method="_on_body_entered"]
 [connection signal="body_exited" from="that means!" to="that means!" method="_on_body_exited"]
-[connection signal="body_entered" from="were" to="were" method="_on_body_entered"]
-[connection signal="body_exited" from="were" to="were" method="_on_body_exited"]
+[connection signal="body_entered" from="p1 castle" to="p1 castle" method="_on_body_entered"]
+[connection signal="body_exited" from="p1 castle" to="p1 castle" method="_on_body_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_pressed"]

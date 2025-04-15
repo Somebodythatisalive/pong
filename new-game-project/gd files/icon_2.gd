@@ -6,8 +6,6 @@ const DMG := 10
 func _ready() -> void:
 	velocity = Vector2(-beginSPEED, 0)
 	
-
-
 func _physics_process(delta: float) -> void:
 	var col: KinematicCollision2D= move_and_collide(velocity)
 	if col:
